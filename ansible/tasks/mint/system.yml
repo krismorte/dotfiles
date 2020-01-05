@@ -1,3 +1,9 @@
+- name: Finxing keys
+  shell: |
+    pacman -Sy archlinux-keyring 
+    pacman -Syyu
+  become: yes
+
 - name: Install list of packages
   apt: name={{item}} state=present
   with_items:
