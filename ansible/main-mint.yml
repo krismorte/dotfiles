@@ -1,7 +1,8 @@
-- name: Playbook to install dotfiles (https://github.com/rodolphocouto/dotfiles)
+- name: Playbook to install dotfiles (https://github.com/krismorte/dotfiles.git)
   hosts: localhost
   tasks:
-    - include: tasks/repositories-mint.yml
-    - include: tasks/system-mint.yml
-    - include: tasks/languages-mint.yml
-    - include: tasks/applications-mint.yml
+    - include: tasks/mint/repositories.yml
+    - include: tasks/mint/system.yml
+    - include: tasks/mint/languages.yml
+    - include: tasks/mint/tools.yml
+    - include: tasks/mint/applications.yml

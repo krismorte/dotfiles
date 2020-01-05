@@ -1,0 +1,16 @@
+- name: Install vscode, aws-cli and intellij
+  pacman: name={{item}} state=present
+  with_items:
+      - code
+      - aws-cli
+      - intellij-ideia-comminity-edition
+  become: yes
+
+# Install using snap
+- name: Install dbeaver, postman and STS
+  yay: name={{item}} state=present
+  with_items:
+    - dbeaver-ce
+    - postman 
+    - spring-tool-suite   
+  become: yes

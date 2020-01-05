@@ -1,9 +1,0 @@
-- name: Install languages
-  apt: name={{item}} state=present
-  with_items:
-      - openjdk-8-jdk      
-      - nodejs
-      - npm
-      - golang-go
-  become: yes
-

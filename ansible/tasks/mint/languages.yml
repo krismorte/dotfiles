@@ -1,0 +1,18 @@
+- name: Install languages
+  apt: name={{item}} state=present
+  with_items:
+      - openjdk-8-jdk      
+      - nodejs
+      - npm
+      - python3-pip #aws prerequisite
+      - golang-go
+  become: yes
+
+
+# Install using snap
+- name: Install Terraform
+  snap: name={{item}} state=present
+  with_items:
+    - terraform    
+  become: yes
+

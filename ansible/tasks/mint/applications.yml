@@ -1,0 +1,26 @@
+- name: Install variety
+  apt: name={{item}} state=present
+  with_items:
+      - variety      
+  become: yes
+
+# Install using snap
+- name: Install spotify
+  snap: name={{item}} state=present
+  with_items:
+    - spotify    
+  become: yes
+
+
+- name: Install slack
+  snap: 
+    name: slack
+    classic: yes
+  become: yes
+
+- name: Install skype
+  snap: 
+    name: skype
+    classic: yes
+  become: yes
+

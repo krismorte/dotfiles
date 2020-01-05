@@ -1,0 +1,50 @@
+- name: Install list of packages
+  pacman: name={{item}} state=present
+  with_items:
+      - curl
+      - docker-compose
+      - docker.io
+      - make
+      - wget
+      - openvpn
+      - virtualbox-6.0
+  become: yes
+
+
+- name: Clone yay repository
+  git:
+    repo: https://aur.archlinux.org/yay.git
+    dest: ~/.yay
+
+- name: Check yay installation
+  stat:
+    path: /usr/bin/yay
+  register: yay
+  changed_when: False
+
+- name: Install yay
+  shell:
+    cmd: makepkg -si --noconfirm
+    chdir: ~/.yay
+  when: yay.stat.exists == False
+
+
+- name: Prevent warning user with internal buzzer
+  become: yes
+  copy:
+    src: ../files/nobeep.conf
+    dest: /etc/modprobe.d/nobeep.conf
+
+- name: Install pacman fonts
+  become: yes
+  pacman:
+    name:
+      - ttf-dejavu
+      - ttf-fira-mono
+      - ttf-font-awesome
+      - noto-fonts
+      - noto-fonts-emoji
+      - noto-fonts-extra
+      - cantarell-fonts
+      - awesome-terminal-fonts
+      - adobe-source-code-pro-fonts

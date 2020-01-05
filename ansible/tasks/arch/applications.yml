@@ -1,0 +1,24 @@
+- name: Install variety
+  pacman: name={{item}} state=present
+  with_items:
+      - variety      
+  become: yes
+
+# Install using snap
+- name: Install spotify
+  yay: name={{item}} state=present
+  with_items:
+    - spotify    
+  become: yes
+
+
+- name: Install slack
+  yay: 
+    name: slack-desktop
+  become: yes
+
+- name: Install skype
+  yay: 
+    name: skypeforlinux-preview-bin
+  become: yes
+

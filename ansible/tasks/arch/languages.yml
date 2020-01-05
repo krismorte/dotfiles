@@ -1,0 +1,11 @@
+- name: Install languages
+  pacman: name={{item}} state=present
+  with_items:
+      - jdk8-openjdk      
+      - nodejs
+      - npm
+      - python-pip #aws prerequisite
+      - go
+      - terraform
+  become: yes
+
