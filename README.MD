@@ -1,13 +1,20 @@
-Para usar o snap [e preciso usar o ansible 2.8
+# dotfiles
 
-ansible nativo do ubuntu esta desatualizado no 2.5 para atualizar adicionar repotirorio, setup.sh faz isso
+dotfiles are usually used to refereced your setup I`m always using linux-mint or arch-linux. The only prerequisite is git, all ohter progammins will be installed even the ansible itself.
 
-ansible-playbook -K ansible/main-mint.yml
+At linux-mint I use the apt and snapd package controll in linux arch pacman and yay
 
-realizar reboot
-pre resquisito GIT
+## hot to use
 
-virtualbox
+`git clone https://github.com/krismorte/dotfiles.git`
+`cd dotfiles`
+for linux-mint
+`./setup-mint.sh`
+or linux arch
+`./setup-arch.sh`
+
+
+Below all the tools, laguabes ana app;ications that this project will install
 
 Languages
 - Java
@@ -24,6 +31,7 @@ Tools
 - Spring Tool Suite
 - intellij
 - postman
+- virtualbox
 
 App
 - spotify
