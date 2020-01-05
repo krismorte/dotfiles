@@ -3,14 +3,14 @@
   with_items:
       - code
       - aws-cli
-      - intellij-ideia-comminity-edition
+      - dbeaver
+      - intellij-idea-community-edition
   become: yes
 
 # Install using snap
 - name: Install dbeaver, postman and STS
   yay: name={{item}} state=present
   with_items:
-    - dbeaver-ce
     - postman 
     - spring-tool-suite   
   become: yes

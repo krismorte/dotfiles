@@ -3,11 +3,11 @@
   with_items:
       - curl
       - docker-compose
-      - docker.io
+      - docker
       - make
       - wget
       - openvpn
-      - virtualbox-6.0
+      - virtualbox
   become: yes
 
 

@@ -16,4 +16,4 @@ if [[ ! -x /usr/share/ansible/plugins/modules/yay ]]; then
 fi
 
 echo "Running playbook..."
-ansible-playbook -K ansible/main.yml
+ansible-playbook -K ansible/main-arch.yml
