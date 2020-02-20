@@ -1,7 +1,6 @@
-- name: Install vscode and aws-cli
+- name: Install aws-cli
   apt: name={{item}} state=present
   with_items:
-      - code
       - awscli
   become: yes
 
@@ -11,6 +10,12 @@
   with_items:
     - dbeaver-ce
     - postman    
+  become: yes
+
+- name: Install vscode
+  snap: 
+    name: code
+    classic: yes
   become: yes
 
 - name: Install intellij
