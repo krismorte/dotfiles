@@ -1,15 +1,16 @@
 # Config vscode/virtualbox/GO repository
-- name: This command will change the working directory to somedir/.
+- name: This command will config repositories.
   shell: |
-    curl https://packages.microsoft.com/keys/microsoft.asc | gpg --dearmor > microsoft.gpg
-    install -o root -g root -m 644 microsoft.gpg /etc/apt/trusted.gpg.d/
-    sh -c 'echo "deb [arch=amd64] https://packages.microsoft.com/repos/vscode stable main" > /etc/apt/sources.list.d/vscode.list'
-    wget -q https://www.virtualbox.org/download/oracle_vbox_2016.asc -O- | sudo apt-key add -
-    wget -q https://www.virtualbox.org/download/oracle_vbox.asc -O- | sudo apt-key add -
-    echo "deb [arch=amd64] http://download.virtualbox.org/virtualbox/debian bionic contrib" | sudo tee /etc/apt/sources.list.d/virtualbox.list
-    add-apt-repository ppa:longsleep/golang-backports
-    add-apt-repository ppa:peterlevi/ppa
-    apt-get update
+    curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add - &&
+    install -o root -g root -m 644 microsoft.gpg /etc/apt/trusted.gpg.d/ &&
+    sh -c 'echo "deb [arch=amd64] https://packages.microsoft.com/repos/vscode stable main" > /etc/apt/sources.list.d/vscode.list' &&
+    wget -q https://www.virtualbox.org/download/oracle_vbox_2016.asc -O- | sudo apt-key add - &&
+    wget -q https://www.virtualbox.org/download/oracle_vbox.asc -O- | sudo apt-key add - &&
+    echo "deb [arch=amd64] http://download.virtualbox.org/virtualbox/debian bionic contrib" | sudo tee /etc/apt/sources.list.d/virtualbox.list &&
+    echo -e "\ndeb [arch=amd64] https://download.docker.com/linux/ubuntu bionic stable" | sudo tee -a /etc/apt/sources.list &&
+    add-apt-repository ppa:longsleep/golang-backports &&
+    add-apt-repository ppa:peterlevi/ppa &&
+    apt-get update &&
     apt install linux-headers-$(uname -r) dkms
   check_mode: yes
   become: yes
