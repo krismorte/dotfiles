@@ -14,6 +14,7 @@
       - wget
       - openvpn
       - virtualbox
+      - dnsutils
   become: yes
 
 
@@ -55,8 +56,3 @@
       - awesome-terminal-fonts
       - adobe-source-code-pro-fonts
 
-- name: Config Aliases
-  shell: |
-    echo "alias mongocli='./nosqlbooster4mongo-5.2.12.AppImage'" >> ~/.bash_aliases
-    echo "alias infracost='/usr/local/bin/infracost' >> ~/.bash_aliases
-  become: yes

@@ -8,21 +8,39 @@
   become: yes
 
 # Install using snap
-- name: Install dbeaver, postman and STS
-  yay: name={{item}} state=present
-  with_items:
-    - postman 
-    - spring-tool-suite   
+- name: Install postman
+  snap:
+    name:
+      - postman 
+    state: present
   become: yes
+
+- name: Install STS
+  shell: |
+    if [[ ! -x /opt/springsource ]]; then
+          mkdir  /opt/springsource
+          wget https://download.springsource.com/release/STS4/4.5.0.RELEASE/dist/e4.14/spring-tool-suite-4-4.5.0.RELEASE-e4.14.0-linux.gtk.x86_64.tar.gz -O STS.tar.gz
+          mv STS.tar.gz /opt/springsource
+          cd /opt/springsource/
+          tar -xzf STS.tar.gz 
+          echo "[Desktop Entry]
+            Encoding=UTF-8
+            Name=Spring IDE
+            Comment=Spring IDE
+            Exec=/opt/springsource/sts-4.5.0.RELEASE/SpringToolSuite4
+            Icon=/opt/springsource/sts-4.5.0.RELEASE/icon.xpm
+            Terminal=false
+            Type=Application
+            Categories=GNOME;Application;Development;Programming;IDE;
+            Keywords=Java,Eclipse,Spring,IDE,Development
+            StartupNotify=true" >  /usr/share/applications/STS.desktop
+          rm STS.tar.gz 
+    fi
+  become: yes
+
 
 - name: Install infracost
   shell: |
     curl --silent --location "https://github.com/infracost/infracost/releases/latest/download/infracost-$(uname -s)-amd64.tar.gz" | tar xz -C /tmp
     mv /tmp/infracost-$(uname -s | tr '[:upper:]' '[:lower:]')-amd64 /usr/local/bin/infracost
-  become: yes
-
-- name: Install MongoBooster
-  shell: |
-    curl --silent --location https://s3.mongobooster.com/download/releasesv6/nosqlbooster4mongo-6.1.6.AppImage
-    mv nosqlbooster4mongo-6.1.6.AppImage /usr/local/bin/nosqlbooster4mongo-6.1.6.AppImage
   become: yes
