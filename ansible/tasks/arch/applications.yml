@@ -5,10 +5,11 @@
   become: yes
 
 # Install using snap
-- name: Install spotify
+- name: Install spotify & chrome
   yay: name={{item}} state=present
   with_items:
-    - spotify    
+    - spotify 
+    - google-chrome   
   become: yes
 
 
