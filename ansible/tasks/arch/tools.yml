@@ -5,6 +5,8 @@
       - aws-cli
       - dbeaver
       - intellij-idea-community-edition
+      - packer
+      - woeusb
   become: yes
 
 # Install using snap
