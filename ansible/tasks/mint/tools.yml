@@ -24,6 +24,12 @@
     classic: yes
   become: yes
 
+- name: Install kube-lens
+  snap: 
+    name: kontena-lens
+    classic: yes
+  become: yes
+
 - name: Install intellij
   snap: 
     name: intellij-idea-community
