@@ -4,7 +4,8 @@
       - build-essential
       - curl
       - docker-compose
-      - docker-ce
+      - docker
+      - docker.io
       - make
       - wget
       - openvpn

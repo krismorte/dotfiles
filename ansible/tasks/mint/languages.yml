@@ -11,8 +11,11 @@
 
 # Install using snap
 - name: Install Terraform
-  snap: name={{item}} state=present
+  snap: name={{item}} state=present channel=latest/edge
   with_items:
     - terraform    
   become: yes
+  
+
+
 
