@@ -1,0 +1,19 @@
+- name: Install vscode, aws-cli and intellij
+  homebrew_cask: name={{item}} state=present
+  with_items:
+    - visual-studio-code
+    - dbeaver-community
+    - postman
+    - eclipse-java
+
+
+- name: Install homebrew formulas
+  homebrew_tap:
+  with_items:
+  - hashicorp/tap
+
+- name: Install packer
+  homebrew: name={{item}} state=present
+  with_items:
+    - hashicorp/tap/packer
+    - tryvy

@@ -1,0 +1,4 @@
+- name: Playbook to install dotfiles (https://github.com/krismorte/dotfiles.git)
+  hosts: localhost
+  tasks:
+    - import_tasks: tasks/mac/system.yml tasks/mac/languages.yml tasks/mac/tools.yml tasks/mac/applications.yml
