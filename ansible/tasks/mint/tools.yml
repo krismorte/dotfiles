@@ -2,7 +2,6 @@
   apt: name={{item}} state=present
   with_items:
       - awscli
-      - trivy
   become: yes
 
 # Install using snap
@@ -30,10 +29,6 @@
     name: kontena-lens
     classic: yes
   become: yes
-
-- name: Install Checkov
-  pip:
-    name: checkov
 
 - name: Install intellij
   snap: 
@@ -63,3 +58,4 @@
           rm STS.tar.gz 
     fi
   become: yes
+

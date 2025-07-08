@@ -1,7 +1,7 @@
 - name: Playbook to install dotfiles (https://github.com/krismorte/dotfiles.git)
   hosts: localhost
   tasks:
-    - include: tasks/arch/system.yml
-    - include: tasks/arch/languages.yml
-    - include: tasks/arch/tools.yml
-    - include: tasks/arch/applications.yml
+    - import_tasks: tasks/arch/system.yml
+    - import_tasks: tasks/arch/languages.yml
+    - import_tasks: tasks/arch/tools.yml
+    - import_tasks: tasks/arch/applications.yml

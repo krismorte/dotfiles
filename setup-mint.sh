@@ -8,5 +8,8 @@ sudo apt-get update
 echo "Installing ansible..."
 sudo apt-get install ansible
 
+echo "Installing git..."
+sudo apt install git
+
 echo "Running playbook..."
 ansible-playbook -K ansible/main-mint.yml
