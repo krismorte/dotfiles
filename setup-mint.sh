@@ -1,15 +1,29 @@
  #!/bin/sh
 
 echo "Adding repo to new ansible version."
-sudo add-apt-repository ppa:ansible/ansible-2.8 -y
+sudo add-apt-repository --yes --update ppa:ansible/ansible
 
-sudo apt-get update
+sudo apt update
 
-echo "Installing ansible..."
-sudo apt-get install ansible
+# Function to check if a command exists
+command_exists () {
+  command -v "$1" >/dev/null 2>&1
+}
 
-echo "Installing git..."
-sudo apt install git
+if command_exists "ansible"; then
+  echo "Ansible already instaled..."
+else
+  echo "Installing ansible..."
+  sudo apt install ansible
+fi
+
+if command_exists "git"; then
+  echo "Git already instaled..."
+else
+  echo "Installing git..."
+  sudo apt install git
+fi
+
 
 echo "Running playbook..."
 ansible-playbook -K ansible/main-mint.yml

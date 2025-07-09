@@ -7,6 +7,13 @@ if [[ ! -x /usr/bin/ansible ]]; then
   sudo pacman -S ansible --noconfirm
 fi
 
+echo "Verifying git installation..."
+
+if [[ ! -x /usr/bin/git ]]; then
+  echo "Installing git..."
+  sudo pacman -S git --noconfirm
+fi
+
 echo "Verifying ansible plugin for yay..."
 
 if [[ ! -x /usr/share/ansible/plugins/modules/yay ]]; then

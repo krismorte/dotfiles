@@ -1,6 +1,6 @@
 # dotfiles
 
-This project is ready to setup linux-mint or arch-linux. The only prerequisite is git, all ohter progammins will be installed even the ansible itself.
+This project is ready to setup linux-mint or arch-linux. The only prerequisite is git, all ohter progrmings will be installed even the ansible and git.
 
 At linux-mint I use the apt and snapd package controll in linux arch pacman and yay
 

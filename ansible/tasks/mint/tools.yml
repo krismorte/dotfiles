@@ -1,7 +1,15 @@
+- name: Check aws-cli
+  command: aws --version
+  register: check_aws
+  become: yes
+
 - name: Install aws-cli
-  apt: name={{item}} state=present
-  with_items:
-      - awscli
+  shell: |
+    curl "https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip" -o "awscliv2.zip"
+    unzip awscliv2.zip
+    sudo ./aws/install
+    rm awscliv2.zip
+  when: check_aws.stdout.find("Command 'aws' not found") != -1 
   become: yes
 
 - name: Install azure cli
