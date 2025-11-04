@@ -1,0 +1,5 @@
+- name: Install spotify and others
+  homebrew_cask: name={{item}} state=present
+  with_items:
+    - spotify
+    - slack

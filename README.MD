@@ -9,9 +9,11 @@ At linux-mint I use the apt and snapd package controll in linux arch pacman and 
 `git clone https://github.com/krismorte/dotfiles.git`
 `cd dotfiles`
 for linux-mint
-`./setup-mint.sh`
+`./setup.sh mint`
 or linux arch
-`./setup-arch.sh`
+`./setup.sh arch`
+or mac
+`./setup.sh mac`
 
 
 Below all the tools, languages anad applications that this project will install
@@ -39,4 +41,7 @@ App
 - slack
 - skype
 - variety
+<<<<<<< HEAD
+=======
 - chrome
+>>>>>>> master
