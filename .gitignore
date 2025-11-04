@@ -1,1 +1,5 @@
 *.swp
+*.zip
+*.deb
+wget-log*
+ansible/aws/**

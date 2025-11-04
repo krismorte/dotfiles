@@ -1,20 +1,22 @@
+# Config terraform repository
+- name: TUpdate apt
+  shell: |
+    apt update
+  check_mode: yes
+  become: yes
+
 - name: Install languages
   apt: name={{item}} state=present
   with_items:
       - openjdk-8-jdk      
       - nodejs
-      - npm
-      - python3-pip #aws prerequisite
-      - golang-go
+      - terraform
+      - packer
+      # - python3-pip #aws prerequisite
+      # - golang-go
   become: yes
 
 
-# Install using snap
-- name: Install Terraform
-  snap: name={{item}} state=present channel=latest/edge
-  with_items:
-    - terraform    
-  become: yes
   
 
 

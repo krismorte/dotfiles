@@ -1,9 +1,37 @@
-- name: Install aws-cli && trivy
-  apt: name={{item}} state=present
-  with_items:
-      - awscli
-      - trivy
+- name: Check aws-cli
+  command: aws --version
+  register: check_aws
   become: yes
+
+- name: Install aws-cli
+  shell: |
+    curl "https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip" -o "awscliv2.zip"
+    unzip awscliv2.zip
+    sudo ./aws/install
+    rm awscliv2.zip
+  when: check_aws.stdout.find("Command 'aws' not found") != -1 
+  become: yes
+
+- name: Install azure cli
+  shell: |
+    sudo mkdir -p /etc/apt/keyrings
+    curl -sLS https://packages.microsoft.com/keys/microsoft.asc |
+      gpg --dearmor | sudo tee /etc/apt/keyrings/microsoft.gpg > /dev/null
+    sudo chmod go+r /etc/apt/keyrings/microsoft.gpg
+
+    AZ_DIST=$(lsb_release -cs)
+    echo "Types: deb
+    URIs: https://packages.microsoft.com/repos/azure-cli/
+    Suites: ${AZ_DIST}
+    Components: main
+    Architectures: $(dpkg --print-architecture)
+    Signed-by: /etc/apt/keyrings/microsoft.gpg" | sudo tee /etc/apt/sources.list.d/azure-cli.sources
+
+    sudo apt-get update
+    sudo apt-get install azure-cli
+  become: yes
+
+  
 
 # Install using snap
 - name: Install dbeaver, postman
@@ -30,10 +58,6 @@
     name: kontena-lens
     classic: yes
   become: yes
-
-- name: Install Checkov
-  pip:
-    name: checkov
 
 - name: Install intellij
   snap: 
@@ -63,3 +87,4 @@
           rm STS.tar.gz 
     fi
   become: yes
+
